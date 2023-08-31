@@ -14,11 +14,11 @@ const Meta = ({ title, keywords, description }) => {
 
 // for Default props
 Meta.defaultProps = {
-  title: "Code Daily",
+  title: "Code Diary",
   keywords:
     "coding, programming, development, learning, daily, progress, journey, community",
   description:
-    "Code Daily is a platform for sharing your daily coding progress. Connect with other developers and learn from each other. Stay motivated and on track to reach your coding goals.",
+    "Code Diary is a platform for sharing your daily coding progress. Connect with other developers and learn from each other. Stay motivated and on track to reach your coding goals.",
 };
 
 export default Meta;

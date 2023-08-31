@@ -16,10 +16,13 @@
   justify-content: center;
   padding: 120px 24px 160px 24px;
   pointer-events: none;
+  /* background-color: #74EBD5;
+  background-image: linear-gradient(90deg, #74EBD5 40%, #9FACE6 90%); */
 }
 
 .main:before {
-  background: radial-gradient(circle, rgba(2, 0, 36, 0) 0, #fafafa 100%);
+  /* background: radial-gradient(circle, rgba(2, 0, 36, 0) 0, #fafafa 100%); */
+  background: linear-gradient(to right, rgb(63, 63, 236), rgba(0, 0, 0, 0)), url(https://grainy-gradients.vercel.app/noise.svg);
   position: absolute;
   content: "";
   z-index: 2;
@@ -36,7 +39,7 @@
   width: 100%;
   height: 100%;
   top: 0;
-  opacity: 0.4;
+  opacity: .9;
   filter: invert(1);
 }
 
@@ -90,7 +93,7 @@
 }
 
 .orange_gradient {
-  @apply bg-gradient-to-r from-amber-500 via-orange-600 to-yellow-500 bg-clip-text text-transparent;
+  @apply bg-gradient-to-r from-amber-400 via-orange-500 to-yellow-400 bg-clip-text text-transparent;
 }
 
 .green_gradient {
@@ -102,7 +105,7 @@
 }
 
 .desc {
-  @apply mt-5 text-lg text-gray-600 sm:text-xl max-w-2xl;
+  @apply mt-5 text-lg text-white sm:text-xl max-w-2xl;
 }
 
 .search_input {
