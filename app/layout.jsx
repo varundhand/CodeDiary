@@ -2,6 +2,9 @@ import '@/styles/global.css'
 import Meta from '@/components/Meta'
 import Head from 'next/head'
 
+import Nav from '@/components/Nav'
+import Provider from '@/components/Provider'
+
 
 const RootLayout = ({children}) => {
   return (
@@ -17,6 +20,7 @@ const RootLayout = ({children}) => {
         </div>
 
         <main className="app">
+          <Nav/>
           {children}
         </main>
 
