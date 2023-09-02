@@ -6,7 +6,7 @@ import { useState,useEffect } from "react"
 import {signIn, signOut, useSession, getProviders} from 'next-auth/react' // custom next hooks for authentication
 
 const Nav = () => {
-  const isUserLoggedIn = false
+  const isUserLoggedIn = true
 
   // const [providers,setProviders] = useState(null)
 

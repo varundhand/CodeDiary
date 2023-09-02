@@ -43,25 +43,6 @@
   filter: invert(1);
 }
 
-.text{
-  position: relative;
-}
-.text.first-text{
-
-}
-.text.sec-text:before{ /** check this */
-  content: '';
-  animation: animate 4s steps(12) infinite;
-}
-@keyframes animate{
-  40%, 60%{
-    left: calc(100% + 4px)
-  }
-  100%{
-    left: 0%
-  }
-}
-
 .gradient {
   height: fit-content;
   z-index: 3;
