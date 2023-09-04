@@ -17,9 +17,9 @@ const Nav = () => {
 
       setProviders(response)
     }
-
+ 
     setProviders();
-  })
+  },[])
 
   return (
     <nav className="flex-between w-full mb-16 pt-3">
@@ -52,7 +52,45 @@ const Nav = () => {
           </div>
         ) : (
           <>
-          
+            {providers && Object.values(providers).map((provider) => (
+              <button
+                type="button"  
+                key={provider.name}
+                onClick={() => signIn(provider.id)}
+                className="black_btn"
+              >
+                Sign In
+              </button>
+            ))}
+          </>
+        )}
+      </div>
+
+      {/* Navbar for Mobile Application */}
+      <div className="sm:hidden flex relative">
+        {isUserLoggedIn ? (
+          <div className="flex">
+             <Image
+                src='/assets/images/temp-profile.jpg'
+                width={37}
+                height={37}
+                className="rounded-full border-double border-1 border-black"
+                alt="profile"
+                onClick={() => {}} 
+              />
+          </div>
+        ) : (
+          <>
+            {providers && Object.values(providers).map((provider) => (
+              <button
+                type="button"  
+                key={provider.name}
+                onClick={() => signIn(provider.id)}
+                className="black_btn"
+              >
+                Sign In
+              </button>
+            ))}
           </>
         )}
       </div>
