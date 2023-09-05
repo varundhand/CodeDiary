@@ -1,6 +1,9 @@
 import NextAuth from "next-auth/next";
 import GoogleProvider from "next-auth/providers/google";
 
+import User from "@/models/user";
+import { connectToDB } from "@/utils/database";
+
 // console.log("env variables", {
 //   clientId: process.env.GOOGLE_ID,
 //   clientSecret: process.env.GOOGLE_CLIENT_SECRET,
@@ -16,11 +19,28 @@ const handler = NextAuth({
   ],
   async session({ session }) {},
   async signIn({ profile }) {
-    // servless route -> lambda function(opens only when called) -> dynamodb
-    // if (account.provider === "google") {
-    //   return profile.email_verified && profile.email.endsWith("@example.com")
-    // }
-    // return true // Do different verification for other providers that don't have `email_verified`
+    try {
+      await connectToDB();
+
+      // checking if user already exists
+      const userExists = await User.findOne({
+        email: profile.email,
+      });
+
+      // if user doesnt exist, create a new user
+      if (!userExists) {
+        await User.create({
+          email: profile.email,
+          username: profile.name.replace(" ", "").toLowerCase(),
+          image: profile.picture,
+        });
+      }
+
+      return true;
+    } catch (error) {
+      console.log(error);
+      return false;
+    }
   },
 });
 
