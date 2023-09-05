@@ -145,8 +145,9 @@
   @apply  font-satoshi font-semibold text-lg text-black tracking-wide;
 }
 
+/* TODO: Style Dropdown */
 .dropdown {
-  @apply absolute right-0 top-full mt-3 w-full p-5 rounded-lg bg-white min-w-[210px] flex flex-col gap-2 justify-end items-end;
+  @apply z-10 absolute right-0 top-full mt-3 w-full p-5 rounded-lg bg-white min-w-[210px] flex flex-col gap-2 justify-end items-end;
 }
 
 .dropdown_link {

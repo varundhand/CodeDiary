@@ -3,7 +3,7 @@ import Meta from '@/components/Meta'
 import Head from 'next/head'
 
 import Nav from '@/components/Nav'
-import Provider from '@/components/Provider'
+import Provider from '@/components/Provider' // needs to be wrapped around the outermost component, which is layout
 
 
 const RootLayout = ({children}) => {
@@ -11,6 +11,7 @@ const RootLayout = ({children}) => {
     <html lang='en'>
       <body>
 
+      <Provider>
         <Head>
           <Meta/> {/* for Custom Meta Data */}
         </Head>
@@ -23,6 +24,7 @@ const RootLayout = ({children}) => {
           <Nav/>
           {children}
         </main>
+      </Provider>
 
       </body>
     </html>
