@@ -17,8 +17,19 @@ const handler = NextAuth({
       clientSecret: process.env.GOOGLE_CLIENT_SECRET,
     }),
   ],
-  async session({ session }) {},
+  async session({ session }) {
+    // existing user through session cookies
+    console.log(session);
+    const sessionUser = await User.findOne({
+      email: session.user.email,
+    });
+
+    session.user.id = sessionUser._id.toString(); // '_id' is the id of the user
+
+    return session;
+  },
   async signIn({ profile }) {
+    console.log(profile);
     try {
       await connectToDB();
 
