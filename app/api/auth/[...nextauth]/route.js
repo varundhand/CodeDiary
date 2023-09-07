@@ -9,6 +9,8 @@ import { connectToDB } from "@/utils/database";
 //   clientSecret: process.env.GOOGLE_CLIENT_SECRET,
 // });
 
+// console.log(process.env.GOOGLE_ID);
+
 const handler = NextAuth({
   providers: [
     // we should define the options in seperate component
@@ -53,6 +55,7 @@ const handler = NextAuth({
       return false;
     }
   },
+  secret: "IamVeryHandsome",
 });
 
 export { handler as GET, handler as POST };

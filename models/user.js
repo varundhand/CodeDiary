@@ -2,7 +2,7 @@ import { Schema, model, models } from "mongoose";
 
 // const mongoose = require('mongoose')
 
-const UserSchema = new mongoose.Schema({
+const UserSchema = new Schema({
   email: {
     type: String,
     unique: [true, "Email already exists!"], // the statement would come if false

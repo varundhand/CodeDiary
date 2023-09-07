@@ -6,20 +6,21 @@ import { useState,useEffect } from "react"
 import {signIn, signOut, useSession, getProviders} from 'next-auth/react' // custom next hooks for authentication
 
 const Nav = () => {
-  const isUserLoggedIn = true
+  const {data: session} = useSession()
+  console.log('session', session)
 
   // for authentication 
   const [providers,setProviders] = useState(null)
   const [toggleDropdown, setToggleDropdown]=  useState(false)
 
   useEffect(() => {
-    const setProviders = async () => {
+    const setUpProviders = async () => {
       const response = await getProviders();
 
       setProviders(response)
     }
  
-    setProviders();
+    setUpProviders();
   },[])
 
   return (
@@ -37,7 +38,7 @@ const Nav = () => {
 
       {/* Navbar For Desktop Application */}
       <div className="sm:flex hidden">
-        {isUserLoggedIn ? (
+        {session?.user ? (
           <div className="flex gap-3 md:gap-5"> 
             <Link href='/create-post' className='black_btn'>New Entry</Link>
             <button type="button" className="outline_btn" onClick={signOut}>Sign Out</button>
@@ -67,9 +68,11 @@ const Nav = () => {
         )}
       </div>
 
+      {/* {alert(session?.user)} */}
+
       {/* Navbar for Mobile Application */}
       <div className="sm:hidden flex relative">
-        {isUserLoggedIn ? (
+        {session?.user ? (
           <div className="flex">
              <Image
                 src='/assets/images/temp-profile.jpg'

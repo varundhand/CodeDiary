@@ -30,6 +30,9 @@ yarn-error.log*
 # utils env
 utils/.env
 
+# root env
+.env
+
 # vercel
 .vercel
 
