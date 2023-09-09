@@ -19,43 +19,46 @@ const handler = NextAuth({
       clientSecret: process.env.GOOGLE_CLIENT_SECRET,
     }),
   ],
-  async session({ session }) {
-    // existing user through session cookies
-    console.log(session);
-    const sessionUser = await User.findOne({
-      email: session.user.email,
-    });
-
-    session.user.id = sessionUser._id.toString(); // '_id' is the id of the user
-
-    return session;
-  },
-  async signIn({ profile }) {
-    console.log(profile);
-    try {
-      await connectToDB();
-
-      // checking if user already exists
-      const userExists = await User.findOne({
-        email: profile.email,
+  callbacks: {
+    async session({ session }) {
+      // existing user through session cookies
+      console.log("session", session);
+      const sessionUser = await User.findOne({
+        email: session.user.email,
       });
 
-      // if user doesnt exist, create a new user
-      if (!userExists) {
-        await User.create({
-          email: profile.email,
-          username: profile.name.replace(" ", "").toLowerCase(),
-          image: profile.picture,
-        });
-      }
+      session.user.id = sessionUser._id.toString(); // '_id' is the id of the user
 
-      return true;
-    } catch (error) {
-      console.log(error);
-      return false;
-    }
+      return session;
+    },
+    async signIn({ profile }) {
+      // console.log("in here");
+      console.log(profile);
+      try {
+        await connectToDB();
+
+        // checking if user already exists
+        const userExists = await User.findOne({
+          email: profile.email,
+        });
+
+        // if user doesnt exist, create a new user
+        if (!userExists) {
+          await User.create({
+            email: profile.email,
+            username: profile.name.replace(/\s/g, "").toLowerCase(), //TODO: Fix this
+            image: profile.picture,
+          });
+        }
+
+        return true;
+      } catch (error) {
+        console.log(error);
+        return false;
+      }
+    },
   },
-  secret: "IamVeryHandsome",
+  // secret: "IamVeryHandsome",
 });
 
 export { handler as GET, handler as POST };

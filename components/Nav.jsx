@@ -7,7 +7,9 @@ import {signIn, signOut, useSession, getProviders} from 'next-auth/react' // cus
 
 const Nav = () => {
   const {data: session} = useSession()
-  console.log('session', session)
+  // const {data: session, data: {user : {name}}, data: {user : {image}}} = useSession() //! Wrong Approach: As useSession is async, it takes time to fetch the session user, hence we cant destructure directly
+
+  console.log(session)
 
   // for authentication 
   const [providers,setProviders] = useState(null)
