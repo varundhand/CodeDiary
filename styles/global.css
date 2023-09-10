@@ -4,10 +4,6 @@
 @tailwind components;
 @tailwind utilities;
 
-/* 
-  Note: The styles for this gradient grid background is heavily inspired by the creator of this amazing site (https://dub.sh) – all credits go to them! 
-*/
-
 .main {
   width: 100vw;
   min-height: 100vh;
@@ -94,7 +90,7 @@
 }
 
 .orange_gradient {
-  @apply bg-gradient-to-r from-amber-400 via-orange-500 to-yellow-400 bg-clip-text text-transparent;
+  @apply bg-gradient-to-r from-amber-400 via-orange-500 to-yellow-400 bg-clip-text text-transparent drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)];
 }
 
 .green_gradient {
@@ -132,11 +128,20 @@
 
 /* Form Component */
 .form_textarea {
-  @apply w-full flex rounded-lg h-[200px] mt-2 p-3 text-sm text-gray-500 outline-0;
+  @apply w-full flex bg-gray-100 rounded-lg h-[200px] mt-2 p-3 text-sm text-black outline-0;
+  /* background-image: url("/assets/images/grid.svg"); */
+  background: rgb(254,210,142);
+  background: linear-gradient(180deg, rgba(254,210,142,1) 0%, rgba(238,237,255,1) 37%);
 }
+/* .form_textarea::after{
+  background-image: url("/assets/images/grid.svg");
+  z-index: 1;
+} */
 
 .form_input {
-  @apply w-full flex rounded-lg mt-2 p-3 text-sm text-gray-500 outline-0;
+  @apply w-full flex rounded-lg mt-2 p-3 text-sm text-black outline-0;
+  background: rgb(254,210,142);
+  background: linear-gradient(180deg, rgba(254,210,142,1) 0%, rgba(238,237,255,1) 37%);
 }
 
 /* Nav Component */

@@ -12,8 +12,8 @@ export const connectToDB = async () => {
   try {
     await mongoose.connect(process.env.MONGODB_URI, {
       dbName: "code_diary",
-      useNewUrlParser: true,
-      useUnifiedToolgy: true,
+      // useNewUrlParse: true, // According to Mongoose 6.0 docs, this code is redundant
+      // useUnifiedToolgy: true,
     });
 
     isConnected = true;

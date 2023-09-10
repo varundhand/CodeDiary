@@ -17,7 +17,7 @@ const Heading = () => {
       <h1 className="head_text text-center ">
         <div className="text ">Discover & Share</div> 
         {/* <br className="max-md:hidden" /> */}
-        <span  className="text drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)] orange_gradient text-center"> {text}</span>
+        <span  className="text orange_gradient text-center"> {text}</span>
         <span>
           <Cursor cursorStyle='|'/>
         </span>

@@ -10,16 +10,20 @@ const CreatePost = () => {
   const [submitting, setsubmitting] = useState(false);
   const [post, setPost] = useState({
     description: '',
-    tag: ''
+    tags: ''
   })
 
   const createPost = async (e) => {
-    
+
   }
 
   return (
     <Form
-    
+      type="Create"
+      post = {post}
+      setPost = {setPost}
+      submitting = {submitting}
+      handleSubmit = {createPost}
     />
   )
 }
