@@ -179,3 +179,8 @@
 .flex-between {
   @apply flex justify-between items-center;
 }
+
+/* Quick Fix */
+.absolute.top-\[20\%\].opacity-80.right-1.z-10 {
+    right: -150px;
+}
