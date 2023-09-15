@@ -12,9 +12,32 @@ const CreatePost = () => {
     description: '',
     tags: ''
   })
+  // const router = useRouter()
 
   const createPost = async (e) => {
+    e.preventDefault();
+    setsubmitting(true)
 
+    try{
+      const response = await fetch('/api/posts/new',
+      {
+        method: 'POST',
+        body: JSON.stringify({
+          description: post.description,
+          userId: session?.user.id,
+          tags: post.tags
+        })
+      })
+
+      if (response.ok){
+        router.push('/')
+      }
+        
+    }catch(error){
+      console.log(error);
+    }finally{
+      setsubmitting(false)
+    }
   }
 
   return (
