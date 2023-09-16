@@ -5,9 +5,9 @@ const PostsSchema = new Schema({
     type: Schema.Types.ObjectId,
     ref: "User", // one to many relationship i.e. the User can create multiple posts
   },
-  posts: {
+  description: {
     type: String,
-    required: [true, "The Post is requied."],
+    required: [true, "The Description is required."],
   },
   tags: {
     type: String,

@@ -2,11 +2,15 @@
 
 import {useState} from 'react'
 import { useSession } from 'next-auth/react'
-import { useRouter } from 'next/router'
+import { useRouter } from 'next/navigation'
 
 import Form from '@/components/Form'
 
 const CreatePost = () => {
+  const router = useRouter();
+  const {data:session} = useSession();
+  // console.log(session)
+
   const [submitting, setsubmitting] = useState(false);
   const [post, setPost] = useState({
     description: '',
@@ -34,7 +38,7 @@ const CreatePost = () => {
       }
         
     }catch(error){
-      console.log(error);
+      console.log(error, 'in here');
     }finally{
       setsubmitting(false)
     }
