@@ -22,9 +22,6 @@ const Heading = () => {
           <Cursor cursorStyle='|'/>
         </span>
       </h1>
-      <p className="desc text-center">
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste sunt non et libero vero vitae commodi,  Velit exercitationem vitae veniam.
-      </p>
     </>
   )
 }

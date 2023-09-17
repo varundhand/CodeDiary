@@ -4,16 +4,9 @@
 import { connectToDB } from "@/utils/database";
 import Posts from "@/models/posts";
 
-export const POST = async (req) => {
-  const { userId, description, tags } = await req.json();
-  console.log(
-    "userId:",
-    typeof userId,
-    " description:",
-    typeof description,
-    " tags:",
-    typeof tags
-  );
+export const POST = async (request) => {
+  const { userId, description, tags } = await request.json();
+
   try {
     await connectToDB();
     const newPost = new Posts({
