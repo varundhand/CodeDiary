@@ -21,8 +21,8 @@ const PostCardList = ({data, handleTagClick}) => {
 }
 
 const Feed = () => {
-  const [searchText, setSearchText] = useState();
-  const [posts, setPosts] = useState();
+  const [searchText, setSearchText] = useState('');
+  const [posts, setPosts] = useState([]);
   
   const handleSearchChange = (e) => {
 
@@ -32,7 +32,7 @@ const Feed = () => {
     const fetchPosts = async () => {
       const response = await fetch('/api/posts');
       const data = await response.json()
-
+      console.log(data);
       setPosts(data) //! API REQUEST NOT WORKING
     }
 

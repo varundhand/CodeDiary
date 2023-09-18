@@ -23,6 +23,7 @@ const CreatePost = () => {
     setsubmitting(true)
 
     try{
+      console.log('get request')
       const response = await fetch('/api/posts/new',
       {
         method: 'POST',
