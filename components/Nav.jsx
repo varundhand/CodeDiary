@@ -9,7 +9,7 @@ const Nav = () => {
   const {data: session} = useSession()
   // const {data: session, data: {user : {name}}, data: {user : {image}}} = useSession() //! Wrong Approach: As useSession is async, it takes time to fetch the session user, hence we cant destructure directly
 
-  console.log(session)
+  // console.log(session)
 
   // for authentication 
   const [providers,setProviders] = useState(null)
@@ -73,7 +73,7 @@ const Nav = () => {
       {/* {alert(session?.user)} */}
 
       {/* Navbar for Mobile Application */}
-      <div className="sm:hidden flex relative">
+      <div className="sm:hidden flex relative cursor-pointer">
         {session?.user ? (
           <div className="flex">
              <Image
@@ -86,51 +86,39 @@ const Nav = () => {
               />
 
               {/* {toggleDropdown && (
-                <div className="dropdown">
-                  <Link
-                    href='/profile'
-                    className="dropdown_link"
-                    onClick={() => setToggleDropdown(false)}
-                  >
-                    My Profile
-                  </Link>
-                  <Link
-                    href='/create-post'
-                    className="dropdown_link"
-                    onClick={() => setToggleDropdown(false)}
-                  >
-                    New Entry
-                  </Link>
-                  <button
-                    type="button"
-                    onClick={()=> {
-                      setToggleDropdown(false);
-                      signOut()
-                    }} 
-                    className="mt-5 w-full black_btn"
-                  >
-                    Sign Out
-                  </button>
-                </div>
               )} */}
-              <div className="absolute right-0 z-10 mt-2 w-56 origin-top-right divide-y divide-gray-100 rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none" role="menu" aria-orientation="vertical" aria-labelledby="menu-button" tabindex="-1">
-                <div className="py-1" role="none">
-            
-                  <a href="#" className="text-gray-700 block px-4 py-2 text-sm" role="menuitem" tabindex="-1" id="menu-item-0">Edit</a>
-                  <a href="#" className="text-gray-700 block px-4 py-2 text-sm" role="menuitem" tabindex="-1" id="menu-item-1">Duplicate</a>
-                </div>
-                <div className="py-1" role="none">
-                  <a href="#" className="text-gray-700 block px-4 py-2 text-sm" role="menuitem" tabindex="-1" id="menu-item-2">Archive</a>
-                  <a href="#" className="text-gray-700 block px-4 py-2 text-sm" role="menuitem" tabindex="-1" id="menu-item-3">Move</a>
-                </div>
-                <div className="py-1" role="none">
-                  <a href="#" className="text-gray-700 block px-4 py-2 text-sm" role="menuitem" tabindex="-1" id="menu-item-4">Share</a>
-                  <a href="#" class="text-gray-700 block px-4 py-2 text-sm" role="menuitem" tabindex="-1" id="menu-item-5">Add to favorites</a>
-                </div>
-                <div className="py-1" role="none">
-                  <a href="#" className="text-gray-700 block px-4 py-2 text-sm" role="menuitem" tabindex="-1" id="menu-item-6">Delete</a>
-              </div>
-            </div>
+              {toggleDropdown && (
+                <>
+                  <div className="absolute  z-10 right-0 mt-0 w-36 origin-top-right divide-y divide-gray-100 rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none" role="menu" aria-orientation="vertical" aria-labelledby="menu-button" tabIndex="-1" style={{ top: 'calc(100% + 0.5rem)', right: '0.5rem' }}>
+                    <div className="py-1" role="none" >  
+                      <Link 
+                        href="/profile" 
+                        className="text-gray-700 font-semibold block px-4 py-2 text-sm hover:bg-gray-100 hover:text-gray-900" role="menuitem" 
+                        tabIndex="-1" 
+                        onClick={() => setToggleDropdown(false)}
+                      > My Profile</Link>
+                      <Link 
+                        href="/create-post" 
+                        className="text-gray-700 font-semibold block px-4 py-2 text-sm hover:bg-gray-100 hover:text-gray-900" role="menuitem" 
+                        tabIndex="-1" 
+                        onClick={() => setToggleDropdown(false)}
+                      >New Entry</Link>
+                    </div>
+                    <div className="py-1" role="none">
+                      <Link 
+                        href="/" 
+                        className="text-red-700 block px-4 py-2 text-sm hover:bg-red-100 hover:text-red-900" role="menuitem" 
+                        tabIndex="-1" 
+                        onClick={()=> {
+                          setToggleDropdown(false);
+                          signOut()
+                        }} 
+                      >Sign Out ➡️</Link>
+                  </div>
+                 </div>
+                </>
+
+              )}
           </div>
         ) : (
           <>

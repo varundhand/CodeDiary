@@ -2,20 +2,20 @@
 
 import { useState,useEffect } from "react"
 
-import PostCard from "./PostCard"
+import PostCard from "./PostCard";
 
 // Since PostCardList component will be used within Feed Component only, thats why we 
 const PostCardList = ({data, handleTagClick}) => {
   console.log(data);
   return (
     <div className="mt-16 prompt_layout">
-      {data.map((post) => { // for each single post, we render a seperate PostCard Component
+      {data.map((post) => ( // for each single post, we render a seperate PostCard Component
         <PostCard
           key={post._id}
           post={post}
           handleTagClick={handleTagClick}
         />
-      })}
+        ))}
     </div>
   )
 }
@@ -37,7 +37,7 @@ const Feed = () => {
     }
 
     fetchPosts()
-  }, [])
+  }, []) 
 
   return (
     <section className="feed">
