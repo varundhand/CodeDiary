@@ -5,6 +5,7 @@ import Head from 'next/head'
 import Nav from '@/components/Nav'
 import Provider from '@/components/Provider' // needs to be wrapped around the outermost component, which is layout
 
+import {Providers} from './GlobalRedux/provider'
 
 const RootLayout = ({children}) => {
   return (
@@ -21,8 +22,10 @@ const RootLayout = ({children}) => {
         </div>
 
         <main className="app">
-          <Nav/>
-          {children}
+          <Providers> {/* RTK PROVIDER */}
+            <Nav/>
+            {children}
+          </Providers>
         </main>
       </Provider>
 
