@@ -3,19 +3,25 @@
 import { useState,useEffect } from "react"
 
 import PostCard from "./PostCard";
+import { useDispatch, useSelector } from "react-redux";
+import SkeletonPost from "./skeleton/SkeletonPost";
+
 
 // Since PostCardList component will be used within Feed Component only, thats why we 
 const PostCardList = ({data, handleTagClick}) => {
   console.log(data);
   return (
     <div className="mt-16 prompt_layout">
-      {data.map((post) => ( // for each single post, we render a seperate PostCard Component
+      {data ? data.map((post) => ( // for each single post, we render a seperate PostCard Component
         <PostCard
           key={post._id}
           post={post}
           handleTagClick={handleTagClick}
         />
-        ))}
+        )) : (
+          <div>Loading...</div>
+        )}
+      
     </div>
   )
 }
@@ -23,6 +29,10 @@ const PostCardList = ({data, handleTagClick}) => {
 const Feed = () => {
   const [searchText, setSearchText] = useState('');
   const [posts, setPosts] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  // const dispatch = useDispatch()
+  // const isLoading = useSelector((state) => state.loading.isLoading)
   
   const handleSearchChange = (e) => {
 
@@ -32,8 +42,9 @@ const Feed = () => {
     const fetchPosts = async () => {
       const response = await fetch('/api/posts');
       const data = await response.json()
-      console.log(data);
-      setPosts(data) //! API REQUEST NOT WORKING
+      // console.log(data);
+      setPosts(data) 
+      setLoading(false)
     }
 
     fetchPosts()
@@ -51,11 +62,18 @@ const Feed = () => {
           className="search_input peer"
         />
       </form>
-
-      <PostCardList
-        data={posts}
-        handleTagClick = {() => {}}
-      />
+      {loading ? 
+        <div className="mt-16">
+          {[...Array(10).keys()].map(i => {
+            return  <SkeletonPost key={i}/>
+          })}
+        </div>
+       : (
+        <PostCardList
+          data={posts}
+          handleTagClick = {() => {}}
+        />
+      )}
     </section>
   )
 }

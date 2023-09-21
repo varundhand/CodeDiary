@@ -1,10 +1,10 @@
 "use client";
 
 import { configureStore } from "@reduxjs/toolkit";
-import counterReducer from "./Features/counter/counterSlice";
+import loadingReducer from "./Features/loading/loadingSlice";
 
 export const store = configureStore({
   reducer: {
-    counter: counterReducer,
+    loading: loadingReducer,
   },
 });
