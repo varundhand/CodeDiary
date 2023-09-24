@@ -2,7 +2,7 @@
 
 import { useState,useEffect } from "react"
 import { useSession } from "next-auth/react"
-import { useRouter } from "next/router" //TODO: import from "next/navigation"
+import { useRouter } from "next/router" //TODO: import from "next/navigation" from docs
 
 import MyProfile from "@/components/Profile"
 
@@ -31,8 +31,8 @@ const Profile = () => {
       name="My"
       desc="Welcome to your personalized profile page"
       data={[]}
-      handleEdit={handleEdit}
-      handleDelete={handleDelete}
+      handleEdit={}
+      handleDelete={}
     />
   )
 }
