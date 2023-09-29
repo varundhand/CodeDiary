@@ -64,7 +64,7 @@ const Feed = () => {
       </form>
       {loading ? 
         <div className="mt-16 w-full  grid place-items-center grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 gap-4 max-w-screen-xl">
-          {[...Array(5).keys()].map(i => {
+          {[...Array(12).keys()].map(i => {
             return  <SkeletonPost key={i} class="m-2 " />
           })}
         </div>

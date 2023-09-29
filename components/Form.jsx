@@ -16,6 +16,10 @@ const Form = ({type, post, setPost, submitting, handleSubmit}) => {
     setPost(prevPost => ({...prevPost, description: post.description + emoji}))
   }
 
+  // const handleClickOutsideEmojisTab = () => { //TODO: Add onClick feature to automatically close emoji tab instead of regular button click
+  //   setshowEmojis(false)
+  // }
+
   return (
 
     <section className='w-full max-w-full flex flex-col items-center'>
