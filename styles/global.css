@@ -162,8 +162,20 @@
   @apply bg-gradient-to-r from-amber-400 via-orange-500 to-yellow-400 bg-clip-text text-transparent drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)];
 }
 
+.red_gradient {
+  @apply bg-gradient-to-r from-red-400 via-red-500 to-red-400 bg-clip-text text-transparent drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)];
+  transition: transform 0.1s ease-in-out; /* Add a smooth transition effect */
+}
+
+.red_gradient:hover {
+  transform: scale(1.12); /* Expand the text by 5% on hover */
+}
 .green_gradient {
   @apply bg-gradient-to-r from-green-400 to-green-500 bg-clip-text text-transparent;
+  transition: transform 0.1s ease-in-out;
+}
+.green_gradient:hover {
+  transform: scale(1.12); /* Expand the text by 5% on hover */
 }
 
 .blue_gradient {
