@@ -17,7 +17,7 @@ const MyProfile = () => {
       const data = await response.json()
       // console.log(data);
       setPosts(data) 
-      setLoading(false)
+      // setLoading(false)
     }
 
     if (session?.user.id)fetchPosts()
@@ -25,12 +25,12 @@ const MyProfile = () => {
 
 
 
-  const fetchPosts = async () => {
-    const response = await fetch(`/api/users/${session?.user.id}/posts`);
-    const data = response.json()
+  // const fetchPosts = async () => {
+  //   const response = await fetch(`/api/users/${session?.user.id}/posts`);
+  //   const data = response.json()
 
-    setPosts(data)
-  }
+  //   setPosts(data)
+  // }
 
   const handleEdit = async () => {
 
