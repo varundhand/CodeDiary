@@ -6,7 +6,7 @@ import { useState} from "react";
 const Profile = ({name, desc,data,handleEdit,handleDelete}) => {
   const {data: session} = useSession()
   const [profileData, setProfileData] = useState(data);
-  console.log(session)
+  // console.log(session)
   // set dataSessions to redux posts
 
   useEffect(() => {
@@ -19,10 +19,10 @@ const Profile = ({name, desc,data,handleEdit,handleDelete}) => {
       };
       fetchPosts();
     }
-  }, [session]);
+  }, [session?.user.id]);
 
   
-  console.log(data);
+  // console.log(data);
   return (
     <section className="w-full">
       <h1 className="head_text text-left">

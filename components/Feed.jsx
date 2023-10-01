@@ -9,7 +9,7 @@ import SkeletonPost from "./skeleton/SkeletonPost";
 
 // Since PostCardList component will be used within Feed Component only, thats why we 
 const PostCardList = ({data, handleTagClick}) => {
-  console.log(data);
+  // console.log(data);
   return (
     <div className="mt-16 prompt_layout">
       {data ? data.map((post) => ( // for each single post, we render a seperate PostCard Component

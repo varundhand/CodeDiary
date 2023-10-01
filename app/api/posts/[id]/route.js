@@ -6,7 +6,7 @@ import Posts from "@/models/posts";
 export const GET = async (request , {params}) => {  // params are present when we pass dynamic url in the request, here the 'id' is dynamic parameter
   try {
     await connectToDB();
-
+    console.log('params',params)
     const post = await Posts.findById(params.id).populate("creator");
     if (!post) return new Response("Post not found :/", {status: 404})
 
@@ -18,13 +18,14 @@ export const GET = async (request , {params}) => {  // params are present when w
 
 // PATCH (update)
 export const PATCH = async ( request, {params}) => {
-    const {post, tag} = await request.json()
+    const {description, tags} = await request.json()
 
     try{
+        await connectToDB()       
         const existngPost = await Posts.findById(params.id)
         if (!existngPost)return new Response('Post Not Found ;-;', {status: 404})
-        existngPost.post = post; // post and tag which the client is sending via request.json()
-        existngPost.tag = tag;
+        existngPost.description = description; // post and tag which the client is sending via request.json()
+        existngPost.tags = tags;
 
         await existngPost.save()
         return new Response(JSON.stringify(existngPost), {status:200})

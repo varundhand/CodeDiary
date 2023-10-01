@@ -212,7 +212,7 @@
   @apply w-full flex bg-gray-100 rounded-lg h-[200px] mt-2 p-3 text-sm text-black outline-0;
   /* background-image: url("/assets/images/grid.svg"); */
   background: rgb(254,210,142);
-  background: linear-gradient(180deg, rgba(254,210,142,1) 0%, rgba(238,237,255,1) 37%);
+  background: linear-gradient(180deg, rgba(254,210,142,1) 0%, rgba(238,237,255,1) 7%);
 }
 /* .form_textarea::after{
   background-image: url("/assets/images/grid.svg");
@@ -222,7 +222,7 @@
 .form_input {
   @apply w-full flex rounded-lg mt-2 p-3 text-sm text-black outline-0;
   background: rgb(254,210,142);
-  background: linear-gradient(180deg, rgba(254,210,142,1) 0%, rgba(238,237,255,1) 37%);
+  background: linear-gradient(180deg, rgba(254,210,142,1) 0%, rgba(238,237,255,1) 29%);
 }
 
 /* Nav Component */

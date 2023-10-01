@@ -10,7 +10,7 @@ import { usePathname,useRouter } from "next/navigation"
 const PostCard = ({ post,handleTagClick,handleEdit,handleDelete}) => {
   const {data:session} = useSession()
   const pathName = usePathname()
-  const router = useRouter()
+  // const router = useRouter()
 
   return (
     <div className="prompt_card">
