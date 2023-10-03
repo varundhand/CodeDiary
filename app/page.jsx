@@ -23,7 +23,7 @@ const Home = () => {
         <span className="text sec-text drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)] orange_gradient text-center"> Your Journey</span>
       </h1> */}
       <p className="desc text-center">
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste sunt non et libero vero vitae commodi,  Velit exercitationem vitae veniam.
+        Join a passionate community of coders, share your coding journey, and thrive. Gain insights, discover tips, and find inspiration for success. Whether you're a beginner or seasoned developer, it's your path to coding success!
       </p>
 
       <Feed/>

@@ -16,6 +16,7 @@ const Profile = ({name, desc,data,handleEdit,handleDelete}) => {
         const response = await fetch(`api/users/${session.user.id}/posts`);
         const newData = await response.json();
         setProfileData(newData);
+        console.log(newData)
       };
       fetchPosts();
     }

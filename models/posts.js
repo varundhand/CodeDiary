@@ -13,6 +13,10 @@ const PostsSchema = new Schema({
     type: String,
     required: [true, "Tags are required."],
   },
+  createdAt: {
+    type: Date,
+    default: Date.now,
+  }
 });
 
 const Posts = models.Posts || model("Posts", PostsSchema);
