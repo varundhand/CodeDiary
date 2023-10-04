@@ -3,6 +3,7 @@
 import {useState} from 'react'
 import { useSession } from 'next-auth/react'
 import { useRouter } from 'next/navigation'
+import toast from 'react-hot-toast'
 
 import Form from '@/components/Form'
 
@@ -10,6 +11,8 @@ const CreatePost = () => {
   const router = useRouter();
   const {data:session} = useSession();
   // console.log(session)
+
+  // const toast = useToaster()
 
   const [submitting, setsubmitting] = useState(false);
   const [post, setPost] = useState({
@@ -36,6 +39,7 @@ const CreatePost = () => {
 
       if (response.ok){
         router.push('/')
+        toast.success('New Entry Added!')
       }
         
     }catch(error){

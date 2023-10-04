@@ -7,11 +7,16 @@ import {signIn, signOut, useSession, getProviders} from 'next-auth/react' // cus
 import { useDispatch, useSelector } from "react-redux"
 import { setLoading } from "@/app/GlobalRedux/Features/loading/loadingSlice"
 import navLoadig from '@/public/assets/icons/navLoading.svg'
+import toast from "react-hot-toast"
 
 
 const Nav = () => {
   const {data: session} = useSession()
   // const {data: session, data: {user : {name}}, data: {user : {image}}} = useSession() //! Wrong Approach: As useSession is async, it takes time to fetch the session user, hence we cant destructure directly
+
+  // if (session){
+  //   toast.success("You've successfully logged in")
+  // }
 
   const dispatch = useDispatch()
   const isLoading = useSelector((state) => state.loading.isLoading)
@@ -21,6 +26,16 @@ const Nav = () => {
   // for authentication 
   const [providers,setProviders] = useState(null)
   const [toggleDropdown, setToggleDropdown]=  useState(false)
+
+  const handleDelete = async () => {
+    await signOut() //TODO: The nav component doesnt persist on signOut, because of which the toast notification unmounts quickly
+    toast("You've been logged out. Come back soon!", {icon:'👋'})
+  }
+
+  const handleSignIn = async (providerId) => {
+    signIn(providerId)
+    // toast.success("You've successfully logged in")
+  }
 
   useEffect(() => {
     const setUpProviders = async () => {
@@ -60,10 +75,10 @@ const Nav = () => {
       ) : (   
       <>      
         <div className="sm:flex hidden">
-          {session?.user ? (
+          {session?.user ? ( 
             <div className="flex gap-3 md:gap-5"> 
               <Link href='/create-post' className='black_btn'>New Entry</Link>
-              <button type="button" className="outline_btn" onClick={signOut}>Sign Out</button>
+              <button type="button" className="outline_btn" onClick={handleDelete }>Sign Out</button>
               <Link href='/profile'>
                 <Image
                   src={session?.user.image}
@@ -80,7 +95,7 @@ const Nav = () => {
                 <button
                   type="button"  
                   key={provider.name}
-                  onClick={() => signIn(provider.id)}
+                  onClick={() => handleSignIn(provider.id)}
                   className="black_btn"
                 >
                   Sign In
@@ -131,7 +146,8 @@ const Nav = () => {
                           tabIndex="-1" 
                           onClick={()=> {
                             setToggleDropdown(false);
-                            signOut()
+                            handleDelete()
+                            // toast("You've been logged out. Come back soon!", {icon:'👋'})
                           }} 
                         >Sign Out ➡️</Link>
                     </div>

@@ -4,6 +4,8 @@ import {useState,useEffect } from 'react'
 import { useRouter ,useSearchParams} from 'next/navigation'
 import Form from '@/components/Form'
 
+import toast from 'react-hot-toast'
+
 const EditPost = () => {
   const router = useRouter();
   const searchParams = useSearchParams()
@@ -51,6 +53,9 @@ const EditPost = () => {
 
       if (response.ok){
         // console.log('post updated successfully!');
+        toast('Post updated successfully!', {
+          icon: '📝',
+        });
         router.push('/')
       }
         
