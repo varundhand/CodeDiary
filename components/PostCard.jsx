@@ -22,7 +22,9 @@ const PostCard = ({ post,handleTagClick,handleEdit,handleDelete}) => {
   // const dateString = post.createdAt
 
   return (
-    <div className="prompt_card">
+    <div 
+      className={`prompt_card ${pathName === '/' ? 'prompt_card_home' : ''} `}
+    >
       <div className="flex flex-col justify-between items-start gap-5">
         <div className="flex gap-3 justify-between items-center">
           <div className=" flex items-center gap-3 cursor-pointer">
