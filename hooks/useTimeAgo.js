@@ -19,7 +19,7 @@ const useTimeAgo = (dateString) => {
       return `${hours} hour${hours !== 1 ? 's' : ''} ago`;
     }
   
-    // If it's been more than a day, you can use a different format
+    // more than a day
     const days = Math.floor(hours / 24);
     return `${days} day${days !== 1 ? 's' : ''} ago`;
 }

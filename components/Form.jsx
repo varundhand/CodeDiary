@@ -34,7 +34,7 @@ const Form = ({type, post, setPost, submitting, handleSubmit}) => {
         <span className="orange_gradient text "> {type} Post</span>
       </h1>
       <p className="desc text-center max-w-md">
-        What's on your mind about coding today?
+        Share your coding journey with the world.
       </p>
 
       <form 
@@ -50,7 +50,7 @@ const Form = ({type, post, setPost, submitting, handleSubmit}) => {
             <textarea
               value={post.description}
               onChange={(e) => setPost({...post, description: e.target.value})}
-              placeholder="Write Your Post Here"
+              placeholder="What's On Your Mind Today?"
               required
               className="form_textarea "
             />
@@ -70,13 +70,13 @@ const Form = ({type, post, setPost, submitting, handleSubmit}) => {
         <label>
           <span className='font-satoshi font-semibold text-base text-black'>
             Tags {` `}
-            <span className="font-normal">(#product, #webdevelopment, #dsa, #100daysofcoding)</span>
+            <span className="font-normal">(Type your tags, separated by spaces)</span>
           </span>
 
           <input
             value={post.tags}
             onChange={(e) => setPost({...post, tags: e.target.value})}
-            placeholder="#tag"
+            placeholder="Your Tags"
             required
             className="form_input"
           />

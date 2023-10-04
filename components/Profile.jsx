@@ -6,6 +6,7 @@ import { useState} from "react";
 const Profile = ({name, desc,data,handleEdit,handleDelete}) => {
   const {data: session} = useSession()
   const [profileData, setProfileData] = useState(data);
+
   // console.log(session)
   // set dataSessions to redux posts
 
@@ -16,7 +17,6 @@ const Profile = ({name, desc,data,handleEdit,handleDelete}) => {
         const response = await fetch(`api/users/${session.user.id}/posts`);
         const newData = await response.json();
         setProfileData(newData);
-        console.log(newData)
       };
       fetchPosts();
     }

@@ -1,7 +1,11 @@
 'use client'
 
 import { useSession } from "next-auth/react"
+
+// custom hooks
 import useTimeAgo from "@/hooks/useTimeAgo"
+import useHashTags from "@/hooks/useHashTags"
+
 // import { useState } from "react"
 import Image from "next/image"
 import { usePathname,useRouter } from "next/navigation"
@@ -12,6 +16,8 @@ const PostCard = ({ post,handleTagClick,handleEdit,handleDelete}) => {
   const {data:session} = useSession()
   const pathName = usePathname()
 
+  // console.log(post.tags)
+  // console.log(useHashTags(post.tags))
   // const router = useRouter()
   // const dateString = post.createdAt
 
@@ -32,7 +38,7 @@ const PostCard = ({ post,handleTagClick,handleEdit,handleDelete}) => {
                 <h3 className="font-satoshi font-semibold text-gray-900">
                   {post.creator.username}
                 </h3>
-                <p className="font-inter text-sm text-white italic" style={{overflowWrap:'anywhere'}} >
+                <p className="font-inter text-xs text-white italic" style={{overflowWrap:'anywhere'}} >
                   {post.creator.email}
                 </p>
               </div> 
@@ -45,7 +51,7 @@ const PostCard = ({ post,handleTagClick,handleEdit,handleDelete}) => {
 
         <p className='my-4 font-satoshi font-semibold text-sm text-gray-800'>{post.description}</p>
         <p className="font-bold">
-          #{post.tags}
+          {useHashTags(post.tags)}
         </p>
         {/* Edit Functionality */}
         {session?.user.id === post.creator._id && pathName === '/profile' && (
