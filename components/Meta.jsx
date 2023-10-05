@@ -1,3 +1,5 @@
+// I deprecated this code
+
 import Head from "next/head";
 
 const Meta = ({ title, keywords, description }) => {

@@ -9,15 +9,23 @@ import { Toaster } from 'react-hot-toast'
 
 import {Providers} from './GlobalRedux/provider'
 
+export const metadata = {
+  title: "Code Diary",
+  keywords:
+    "coding, programming, development, learning, daily, progress, journey, community",
+  description:
+    "Code Diary is a platform for sharing your daily coding progress. Connect with other developers and learn from each other. Stay motivated and on track to reach your coding goals.",
+}
+
 const RootLayout = ({children}) => {
   return (
     <html lang='en'>
       <body>
 
       <Provider>
-        <Head>
-          <Meta/> {/* for Custom Meta Data */}
-        </Head>
+        {/* <Head>
+          <Meta/> 
+        </Head> */}
 
         <div className="main">
           <div className="gradient" />
