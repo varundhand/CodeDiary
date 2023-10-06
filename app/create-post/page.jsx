@@ -4,6 +4,7 @@ import {useState} from 'react'
 import { useSession } from 'next-auth/react'
 import { useRouter } from 'next/navigation'
 import toast from 'react-hot-toast'
+import { NextSeo } from 'next-seo'
 
 import Form from '@/components/Form'
 
@@ -50,13 +51,19 @@ const CreatePost = () => {
   }
 
   return (
-    <Form
-      type="Create"
-      post = {post}
-      setPost = {setPost}
-      submitting = {submitting}
-      handleSubmit = {createPost}
-    />
+    <>
+      <NextSeo
+        title='hello'
+        description='yeet'
+      />
+      <Form
+        type="Create"
+        post = {post}
+        setPost = {setPost}
+        submitting = {submitting}
+        handleSubmit = {createPost}
+      />
+    </>
   )
 }
 

@@ -8,10 +8,12 @@ import { useDispatch, useSelector } from "react-redux"
 import { setLoading } from "@/app/GlobalRedux/Features/loading/loadingSlice"
 import navLoadig from '@/public/assets/icons/navLoading.svg'
 import toast from "react-hot-toast"
+import { useRouter } from "next/navigation"
 
 
 const Nav = () => {
   const {data: session} = useSession()
+  const router = useRouter()
   // const {data: session, data: {user : {name}}, data: {user : {image}}} = useSession() //! Wrong Approach: As useSession is async, it takes time to fetch the session user, hence we cant destructure directly
 
   // if (session){
@@ -30,6 +32,7 @@ const Nav = () => {
   const handleDelete = async () => {
     await signOut() //TODO: The nav component doesnt persist on signOut, because of which the toast notification unmounts quickly
     toast("You've been logged out. Come back soon!", {icon:'👋'})
+    router.push('/')
   }
 
   const handleSignIn = async (providerId) => {

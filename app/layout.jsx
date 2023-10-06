@@ -1,11 +1,12 @@
 import '@/styles/global.css'
-import Meta from '@/components/Meta'
+// import Meta from '@/components/Meta'
 import Head from 'next/head'
 
 import Nav from '@/components/Nav'
 import Provider from '@/components/Provider' // needs to be wrapped around the outermost component, which is layout
 
 import { Toaster } from 'react-hot-toast'
+import metaDataProfile from 'public/assets/images/metadata-profile.png'
 
 import {Providers} from './GlobalRedux/provider'
 
@@ -23,9 +24,16 @@ const RootLayout = ({children}) => {
       <body>
 
       <Provider>
-        {/* <Head>
-          <Meta/> 
-        </Head> */}
+        <Head>
+          <title>{metadata.title}</title>
+
+          <meta name="keywords" content={metadata.keywords} />
+          <meta name="description" content={metadata.description} />
+
+          <meta property="og:title" content="Code Diary" />
+          <meta property="og:description" content="Your Everyday Coding Journal" />
+          <meta property="og:image" content={metaDataProfile}/>
+        </Head>
 
         <div className="main">
           <div className="gradient" />

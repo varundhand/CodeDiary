@@ -30,7 +30,7 @@ const PostCard = ({ post,handleTagClick,handleEdit,handleDelete}) => {
           <div className=" flex items-center gap-3 cursor-pointer">
 
               <Image
-                src={post.creator.image}
+                src={post.creator?.image}
                 alt='user_image'
                 width={40}
                 height={40}
@@ -38,10 +38,10 @@ const PostCard = ({ post,handleTagClick,handleEdit,handleDelete}) => {
               />
               <div className="flex flex-col">
                 <h3 className="font-satoshi font-semibold text-gray-900">
-                  {post.creator.username}
+                  {post.creator?.username}
                 </h3>
                 <p className="font-inter text-xs text-white italic" style={{overflowWrap:'anywhere'}} >
-                  {post.creator.email}
+                  {post.creator?.email}
                 </p>
               </div> 
           </div>
@@ -56,7 +56,7 @@ const PostCard = ({ post,handleTagClick,handleEdit,handleDelete}) => {
           {useHashTags(post.tags)}
         </p>
         {/* Edit Functionality */}
-        {session?.user.id === post.creator._id && pathName === '/profile' && (
+        {session?.user.id === post.creator?._id && pathName === '/profile' && (
             <div className="mt-5 flex-center gap-4 border-t border-gray pt-3">
               <p
                 className="font-inter font-bold text-sm green_gradient cursor-pointer"
